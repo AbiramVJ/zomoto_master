@@ -45,6 +45,7 @@ userSchema.pre("save",function(next){
     const user = this;
 
     //password is modified
+
     if(!user.isModified("password")) return next();
 
     //genarate bcrypt
@@ -54,7 +55,7 @@ userSchema.pre("save",function(next){
         // hash the password
         bcrypt.hash(user.password, salt,(error,hash)=>{
             if(error) return next(error);
-
+            
             // assign hashed password
             user.password = hash;
             return next();
