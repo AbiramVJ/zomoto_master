@@ -9,17 +9,19 @@ import helmet from "helmet";
 //database connection
 import ConnectDB from "./database/connection.js";
 
+//use
 const zomoto = express();
 zomoto.use(cors());
-zomoto.use(express.json()); //it passesd incoming request from the payload
+zomoto.use(express.json()); 
 zomoto.use(helmet());
 
 // API
-
  import Auth from "./API/Auth/index.js";
+
 
 // Application Routes
 zomoto.use("/auth",Auth);
+
 
 
 // Server connection port
