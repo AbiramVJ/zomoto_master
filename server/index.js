@@ -19,7 +19,7 @@ zomoto.use(cors());
 zomoto.use(express.json()); 
 zomoto.use(helmet());
 zomoto.use(passport.initialize());
-zomoto.use(passport.session());
+// zomoto.use(passport.session());
 
 googlAutheConfig(passport);
 
