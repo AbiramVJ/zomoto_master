@@ -1,4 +1,4 @@
-// libaray
+// library
 import  express  from "express";
 
 
@@ -21,7 +21,7 @@ import {FoodModel} from "../../database/food/index.js"
  Router.get('/r/:_id', async(req,res)=>{
      try{
          const{_id} = req.params;
-         const foods = await FoodModel.find({restauran_id});
+         const foods = await FoodModel.find({restaurant: _id});
          return res.json({foods});
 
      }catch(error){

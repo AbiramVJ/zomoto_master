@@ -1,4 +1,4 @@
-// libaray
+// library
 import express  from "express";
 
 
@@ -12,7 +12,7 @@ import express  from "express";
 
  /**
  * Router    /
- * Des        GET all the restauran accourding to the location
+ * Des        GET all the restaurant according to the location
  * Params     none
  * access     public
  * method     GET
@@ -38,7 +38,7 @@ import express  from "express";
 
   /**
  * Router    /
- * Des        GET insividual restaurant details based on id
+ * Des        GET individual restaurant details based on id
  * Params     none
  * access     public
  * method     GET
@@ -48,11 +48,11 @@ import express  from "express";
   Router.get("/:_id",async(req,res) => {
     try{
         const{_id}= req.params;
-        const restauran = await RestaurantModel.findById(_id);
+        const restaurant = await RestaurantModel.findById(_id);
 
-        if(!restauran)
+        if(!restaurant)
         return res.status(400).json({error:"Restaurant Not Found"});
-        return res.json({restauran});
+        return res.json({restaurant: restaurant});
 
     }catch(error){
         return res.status(500).json({error:error.message});
@@ -76,8 +76,8 @@ import express  from "express";
        * results = {
        * Raj hotel
        * raj row
-       * Ronraj
-       * $option:"i"= not case is uppercase or smallcase
+       * Ronda
+       * $option:"i"= not case is uppercase or smallage
        * }
       
        */
