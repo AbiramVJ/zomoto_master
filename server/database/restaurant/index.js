@@ -1,4 +1,4 @@
-import { mongo, Mongoose } from "mongoose";
+import Mongoose from "mongoose";
 
 const RestaurantSchema = new Mongoose.Schema(
     {
@@ -14,15 +14,15 @@ const RestaurantSchema = new Mongoose.Schema(
         averageCost:Number,
         amenities:[String],
         menuImage:{
-            type:Mongoose.Type.ObjectId,
-            ref:"Images",
+            type:Mongoose.Types.ObjectId,
+            ref:"images",
         },
         menu:{
-            type:Mongoose.Type.ObjectId,
-            ref:"Menus"
+            type:Mongoose.Types.ObjectId,
+            ref:"menu",
         },
-        reviews:[{type: Mongoose.Type.ObjectId, ref:"Reviews"}],
-        photos:{type: Mongoose.Type.ObjectId, ref:"Images"},
+        reviews:[{type: Mongoose.Types.ObjectId, ref:"Reviews"}],
+        photos:{type: Mongoose.Types.ObjectId, ref:"Images"},
 
 
     },

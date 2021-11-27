@@ -25,11 +25,20 @@ googlAutheConfig(passport);
 
 // API
  import Auth from "./API/Auth/index.js";
+ import Restaurant from "./API/Restaurant/index.js";
+ import Food from "./API/Food/insex.js";
+ import Menu from "./API/menu/index.js";
+ import Image from "./API/Image/index.js"; //image API
  
 
 
 // Application Routes
 zomoto.use("/auth",Auth);
+zomoto.use("/restaurant",Restaurant);
+zomoto.use("/food",Food);
+zomoto.use("/menu",Menu);
+zomoto.use("/image",Image); // image API
+
 
 
 

@@ -1,13 +1,13 @@
-import { mongo, Mongoose } from "mongoose";
+import Mongoose from "mongoose";
 
 const OrderSchema = new Mongoose.Schema(
         {
                 user:{
-                    type:Mongoose.Type.ObjectId,
+                    type:Mongoose.Types.ObjectId,
                     ref:"Users"
                 },
                 orderDetails:[{
-                    food:{type:Mongoose.Type.ObjectId,ref:"Foods"},
+                    food:{type:Mongoose.Types.ObjectId,ref:"Foods"},
                     quantity:{type:Number, require:true},
                     paymode:{type:String, require:true},
                     status:{type:String, default:"placed"},

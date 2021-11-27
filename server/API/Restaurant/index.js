@@ -1,10 +1,10 @@
 // libaray
-import { express } from "express";
+import express  from "express";
 
 
 // data model
 
-import RestaurantModel from "../../database/restaurant/index.js"
+ import {RestaurantModel} from "../../database/restaurant/index.js"
 
 
 //route

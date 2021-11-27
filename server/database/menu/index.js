@@ -1,4 +1,4 @@
-import { mongo, Mongoose } from "mongoose";
+import Mongoose from "mongoose";
 
 const MenuSchema = new Mongoose.Schema({
     menus:[

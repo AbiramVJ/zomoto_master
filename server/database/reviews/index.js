@@ -1,16 +1,16 @@
-import { mongo, Mongoose } from "mongoose";
+import  Mongoose from "mongoose";
 
 const ReviewSchema = new Mongoose.Schema({
-    food:{type:Mongoose.Type.ObjectId, ref:"Foods"},
-    restaurant:{type:Mongoose.Type.ObjectId, ref:"Restaurants"},
-    user:{type:Mongoose.Type.ObjectId, ref:"Users"},
+    food:{type:Mongoose.Types.ObjectId, ref:"Foods"},
+    restaurant:{type:Mongoose.Typs.ObjectId, ref:"Restaurants"},
+    user:{type:Mongoose.Types.ObjectId, ref:"Users"},
     rating:{type: Number, require:true},
     reviewText:{type: String, require:true},
     isRestaurantReview:Boolean,
     isFoodReview:Boolean,
     photos: [
         {
-            type:Mongoose.Type.ObjectId,
+            type:Mongoose.Types.ObjectId,
             ref:"Images"
         },
     ],

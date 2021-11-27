@@ -1,10 +1,10 @@
 // libaray
-import { express } from "express";
+import  express  from "express";
 
 
 // data model
 
-import FoodModel from "../../database/food/index.js"
+import {FoodModel} from "../../database/food/index.js"
 
 
 //route
@@ -23,8 +23,6 @@ import FoodModel from "../../database/food/index.js"
          const{_id} = req.params;
          const foods = await FoodModel.find({restauran_id});
          return res.json({foods});
-         
-
 
      }catch(error){
          return res.status(500).json({ error: error.message});
@@ -52,9 +50,6 @@ import FoodModel from "../../database/food/index.js"
         if(!foods)
           return res.status(400).json({error:`Restaurant Not Found ${category}`});
           return res.json({foods});
-        
-        
-
     }catch(error){
         return res.status(500).json({error:error.message});
         
