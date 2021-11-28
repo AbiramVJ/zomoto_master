@@ -1,6 +1,10 @@
 // library
 import express  from "express";
 
+//validation
+import { ValidateRestaurantCity,ValidateRestaurantSearchString } from "../../validation/resturant.js";
+import { ValidateId } from "../../validation/common.js";
+
 
 // data model
 
@@ -21,6 +25,7 @@ import express  from "express";
 
  Router.get('/', async(req,res)=>{
      try{
+        await ValidateRestaurantCity(req.query);
          const{city} = req.query;
          const Restaurants = await RestaurantModel.find({ city});
          if(Restaurants.length === 0){
@@ -47,6 +52,7 @@ import express  from "express";
 
   Router.get("/:_id",async(req,res) => {
     try{
+        await ValidateId(req.params);
         const{_id}= req.params;
         const restaurant = await RestaurantModel.findById(_id);
 
@@ -82,6 +88,7 @@ import express  from "express";
       
        */
       try{
+          await ValidateRestaurantSearchString(req.params);
         const { searchString} = req.params;
             const restaurants = await RestaurantModel.find({
                 name: {$regex: searchString, $option:"i"},

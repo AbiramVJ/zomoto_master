@@ -8,6 +8,6 @@ const MenuSchema = new Mongoose.Schema({
            
         },
     ],
-    recomended:[{type:Mongoose.Types.ObjectId, ref:"Foods", unique: true}] ,
+    recommended:[{type:Mongoose.Types.ObjectId, ref:"Foods", unique: true}] ,
 });
-export const MenuModel = Mongoose.model("Menu",MenuSchema);
+export const MenuModel = Mongoose.model("menus",MenuSchema);

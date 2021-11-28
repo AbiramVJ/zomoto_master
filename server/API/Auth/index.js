@@ -2,10 +2,13 @@
 import express from "express";
 import passport from "passport";
 
+// validation
+import { ValidatedSignin, ValidatingSignup } from "../../validation/auth.js";
+
 // // Models
  import {UserModel} from "../../database/user/index.js";
 
-// create a roter
+// create a rotes
 const Router = express.Router();
 
 /**
@@ -18,7 +21,7 @@ const Router = express.Router();
 
 Router.post("/signup", async(req,res)=>{
     try{
-
+        await ValidatingSignup(req.body.credentials);
         await UserModel.findByEmailAndPhone(req.body.credentials);
         const  newUser = await UserModel.create(req.body.credentials);
         const token = newUser.generateJwtToken();
@@ -41,13 +44,14 @@ Router.post("/signup", async(req,res)=>{
 
 Router.post("/signin",async(req,res)=>{
     try{
+        await ValidatedSignin(req.body.credentials);
         const user = await UserModel.findByEmailAndPassword(req.body.credentials);
         const token = user.generateJwtToken();
         return res.status(200).json({token, status:"success"})
 
     }
     catch(error){
-        return res.status(500).json({erro: error.message});
+        return res.status(500).json({error: error.message});
     }
 });
 

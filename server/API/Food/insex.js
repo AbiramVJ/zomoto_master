@@ -1,6 +1,8 @@
 // library
 import  express  from "express";
+// validation
 
+import { ValidateCategory, ValidateId } from "../../validation/common.js";
 
 // data model
 
@@ -20,6 +22,8 @@ import {FoodModel} from "../../database/food/index.js"
 
  Router.get('/r/:_id', async(req,res)=>{
      try{
+
+        await ValidateId(req.params);
          const{_id} = req.params;
          const foods = await FoodModel.find({restaurant: _id});
          return res.json({foods});
@@ -41,6 +45,7 @@ import {FoodModel} from "../../database/food/index.js"
 
   Router.get("/c/:category",async(req,res) => {
     try{
+        await ValidateCategory(req.params);
         const{category}= req.params;
         const foods = await FoodModel.find({
             name: {$regex: category, $option:"i"},

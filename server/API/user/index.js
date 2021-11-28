@@ -4,7 +4,8 @@ import express from "express";
 
 //database model
 
-import UserModel from "../../database/user/index.js";
+import {UserModel} from "../../database/user/index.js";
+const Router = express.Router();
 
 /**
  * Router    /:_id
@@ -18,11 +19,13 @@ Router.get("/:_id",async(req,res)=>{
     try{
 
         const{_id}= req.params;
+        
         const getUser = UserModel.findById(_id);
+        
         if(!getUser){
             return res.status(404).json({error: "user not found"});
         }
-        return res.json({user: getUser});
+        return res.json({users: getUser});
 
     }catch(error){
         return res.status(500).json({error: error.message});

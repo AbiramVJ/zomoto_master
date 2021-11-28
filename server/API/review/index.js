@@ -1,9 +1,11 @@
-// libaray
-import  express, { response, Router }  from "express";
+// library
+import  express from "express";
 
 // data model
 
-import ReviewModel from "../../database/reviews/index.js";
+import {ReviewModel} from "../../database/reviews/index.js";
+
+const Router = express.Router();
 
 /**
  * Router    /:resid
@@ -29,37 +31,40 @@ Router.get("/:resid",async(req,res)=>{
 
 /**
  * Router    /new
- * Des        POST adding new food/ restaurant reviw and rating
+ * Des        POST adding new food/ restaurant review and rating
  * Params     none
  * access     public
  * method     POST
  */
 
-Router.post("/new",(req,res)=>{
+Router.post("/new",async(req,res)=>{
     try{
         const {reviewData}= req.body;
 
-        await ReviewModel.create({...reviewData}); // its a new object sprad operater
-        return res.json({reviews: "succuessfully created route"})
+        await ReviewModel.create({...reviewData}); // its a new object spread operator
+        return res.json({reviews: "successfully created route"})
 
     }catch(error){
         return res.status(500).json({error: error.message});
     }
 });
 
+
+  
+
 /**
  * Router    /delete
- * Des        Delete adding new food/ restaurant reviw and rating
+ * Des        Delete adding new food/ restaurant review and rating
  * Params     _id
  * access     public
  * method     DELETE
  */
 
- Router.post("/delete/:_id",(req,res)=>{
+ Router.post("/delete/:_id",async(req,res)=>{
     try{
         const {_id} = req.params;
         await ReviewModel.findByIdAndDelete(_id);
-        return res.json({review: "sucessfully deleted the review"});
+        return res.json({review: "successfully deleted the review"});
 
     }catch(error){
         return res.status(500).json({error: error.message});

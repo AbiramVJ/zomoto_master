@@ -8,7 +8,7 @@ const userSchema = new Mongoose.Schema({
     email:{type:String, require:true},
     password:{type:String},
     address:[{detail:{type:String}, for:{type:String}}],
-    phoneNumber: [{type: Number}]
+    phoneNumber: [{type: Number}],
 
 
 },
@@ -64,6 +64,6 @@ userSchema.pre("save",function(next){
 })
 
 //static
-export const UserModel = Mongoose.model("User",userSchema);
+export const UserModel = Mongoose.model("users",userSchema);
 
 
