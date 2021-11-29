@@ -26,32 +26,3 @@ export default (passport) => {
   );
 };
 
-// import JwtPassport from "passport-jwt";
-// import passport from "passport";
-
-// //Database model
-// import {UserModel}  from "../database/user/index.js";
-
-// const JWTStrategy = JwtPassport.Strategy;
-// const ExtractJwt = JwtPassport.ExtractJwt;
-
-// const options = {
-//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-//     secretOrKey: "ZomatoAPP",
-//   };
-// export default(passport)=>{
-//     passport.use(
-//         new JWTStrategy(options,async(jwt_payload,done)=>{
-//             try{
-//                 const doseUserExist = await UserModel.findById(jwt_payload.user);
-//                 if(!doseUserExist) return done(null,false);
-//                 return done(null,doseUserExist);
-
-//             }catch(error){
-//                 return new Error(error);
-//             }
-//         })
-//     )
-// }
-
-// //explanation
