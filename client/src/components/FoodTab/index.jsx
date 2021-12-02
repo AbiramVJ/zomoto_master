@@ -130,8 +130,8 @@ function FoodTabs() {
 // Key inside map()
 // Whenever looping through array using map()
 // It needs to know that each element it is rendering is different
-// from the rest of the elemets present in the array.
-// So we need to specify a key (propery) in the parent of the rendered element.
+// from the rest of the elements present in the array.
+// So we need to specify a key (propers) in the parent of the rendered element.
 // you can use the index property inside array.map((singleEmelentInstance, index) => {});
 // Index is just representing the current position of the element in the mapped array
 
