@@ -4,6 +4,7 @@ import Delivery from '../components/Delivery';
 import Dining from '../components/Dining';
 import NightLife from "../components/NightLife/index";
 import Nutrition from "../components/Nutrition/index";
+import ImageGrid from '../components/restaurant/ImageGrid';
 
 export const HomePage = () => {
     const { type } = useParams();
@@ -15,7 +16,8 @@ export const HomePage = () => {
             {type === "delivery" && <Delivery />}  
             {type === "dining" && <Dining />} 
             {type === "night" && <NightLife/>} 
-            {type === "nutri" && <Nutrition/>} 
+            {type === "nutri" && <Nutrition />}
+            {/* {type === "restaurant" && <ImageGrid/>}  */}
             
              </div>
 

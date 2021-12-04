@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 // Layout
 import HomeLayout from '../layout/HomeLayout';
 
+
 function HomeLayoutHoc({ component: Component, ...rest }) {
   return(
     <>
@@ -17,6 +18,8 @@ function HomeLayoutHoc({ component: Component, ...rest }) {
             </HomeLayout>
           }  
         />
+
+     
       </Routes>
     </>
   );
