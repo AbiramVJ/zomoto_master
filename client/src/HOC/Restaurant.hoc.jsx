@@ -17,11 +17,29 @@ function RestaurantLayoutHoc({component:Component, ...rest}) {
             )}/>
         </Routes>  */}
 
-        <RestaurantLayout>
+        {/* <RestaurantLayout>
+            <Component/>
+          </RestaurantLayout> */}
+
+
+          <Routes>
+        <Route
+          {...rest}
+      
+          element={
+            <RestaurantLayout>
             <Component/>
           </RestaurantLayout>
+          }  
+        />
+
+     
+      </Routes>
+
       
         </>
+
+        
     )
 }
 

@@ -31,7 +31,7 @@ function App() {
     </Routes>
     <HomeLayoutHoc path="/:type" exact component={HomePage} />
      <RestaurantLayoutHoc path="/restaurant/:id" exact component={RestaurantPage}/> 
-
+     <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={RestaurantPage}/> 
      
   </>
    

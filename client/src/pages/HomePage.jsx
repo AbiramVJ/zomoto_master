@@ -17,7 +17,7 @@ export const HomePage = () => {
             {type === "dining" && <Dining />} 
             {type === "night" && <NightLife/>} 
             {type === "nutri" && <Nutrition />}
-            {/* {type === "restaurant" && <ImageGrid/>}  */}
+            
             
              </div>
 
