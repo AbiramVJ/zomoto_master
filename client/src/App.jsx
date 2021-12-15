@@ -9,6 +9,7 @@ import HomeLayoutHoc from './HOC/HomeLayoutHoc';
 import HomePage from "./pages/HomePage";
 import RestaurantLayoutHoc from './HOC/Restaurant.hoc';
 import RestaurantPage from './pages/RestaurantPage';
+import Overview from './components/restaurant/OverView';
 
 
 
@@ -31,7 +32,8 @@ function App() {
     </Routes>
     <HomeLayoutHoc path="/:type" exact component={HomePage} />
      <RestaurantLayoutHoc path="/restaurant/:id" exact component={RestaurantPage}/> 
-     <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={RestaurantPage}/> 
+     <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={Overview}/> 
+     
      
   </>
    
