@@ -1,6 +1,6 @@
 import Mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 
 const userSchema = new Mongoose.Schema({
@@ -41,6 +41,7 @@ userSchema.statics.findByEmailAndPassword = async({email, password})=>{
 };
 
 
+// PASSWORD HASH FUNCTIONALLY
 userSchema.pre("save",function(next){
     const user = this;
 

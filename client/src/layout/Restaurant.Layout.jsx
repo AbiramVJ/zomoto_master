@@ -10,6 +10,8 @@ import ImageGrid from '../components/restaurant/ImageGrid';
 import RestaurantInfo from "../components/restaurant/RestaurantInfo";
 import InfoButton from '../components/restaurant/InfoButtons';
 import Tabs from '../components/restaurant/Tabs';
+import Reviews from '../components/restaurant/Reviews/Reviews';
+
 
  function Restaurantlayout({children}) {
     const [restaurant, setRestaurant] = useState({
@@ -64,9 +66,11 @@ import Tabs from '../components/restaurant/Tabs';
               </InfoButton>
             </div>
             <div className="my-10">
-              <Tabs />
+              <Tabs /> 
              </div>
-             {children}
+             
+             {children}   
+                
         
             </div>
             
