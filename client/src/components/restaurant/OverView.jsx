@@ -9,6 +9,7 @@ import { NextArrow,PrevArrow } from "../CarouselArrow";
 import MenuCollection from "./MenuCollection";
 import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
 import ReviewCard from "./Reviews/ReviewCard";
+import MapView from "./MapView";
 
 
 
@@ -162,12 +163,12 @@ function Overview() {
               </div>
             </div>
             <div className="my-4 w-full md:hidden flex flex-col gap-4">
-              {/* <MapView
+              <MapView
                 title="McDonald's"
-                phno="+919234345634"
+                phno="+94774345634"
                 mapLocation={getLatLong("28.64435706075414, 77.11929960209767")}
                 address="Shop 52, Plot 8, 9 & 10, G-8, Ground Floor, DDA Market, J-Block, Community Centre, Rajouri Garden, New Delhi"
-              /> */}
+              />
             </div>
           </div>
         </div>
@@ -175,12 +176,12 @@ function Overview() {
           style={{ height: "fit-content" }}
           className="hidden md:flex md:w-4/12 sticky rounded-xl top-10 bg-white p-3 shadow-md flex-col gap-4"
         >
-          {/* <MapView
+          <MapView
             title="McDonald's"
-            phno="+919234345634"
-            mapLocation={getLatLong("28.64435706075414, 77.11929960209767")}
+            phno="+94772345634"
+            mapLocation={getLatLong("6.932185339564366, 79.86134438143317")}
             address="Shop 52, Plot 8, 9 & 10, G-8, Ground Floor, DDA Market, J-Block, Community Centre, Rajouri Garden, New Delhi"
-          /> */}
+          />
           map stuff
         </aside>
       </div>
@@ -190,5 +191,5 @@ function Overview() {
     )
 }
 
-export default Overview
+export default Overview;
 
