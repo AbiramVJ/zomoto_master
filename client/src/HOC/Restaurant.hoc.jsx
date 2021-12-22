@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes,Route } from 'react-router';
-import Reviews from '../components/restaurant/Reviews/Reviews';
+
 
 //layout
 import RestaurantLayout from '../layout/Restaurant.Layout';

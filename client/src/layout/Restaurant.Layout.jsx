@@ -11,6 +11,7 @@ import RestaurantInfo from "../components/restaurant/RestaurantInfo";
 import InfoButton from '../components/restaurant/InfoButtons';
 import Tabs from '../components/restaurant/Tabs';
 import Reviews from '../components/restaurant/Reviews/Reviews';
+import CartContainer from '../components/Cart/CartContainer';
 
 
  function Restaurantlayout({children}) {
@@ -69,10 +70,13 @@ import Reviews from '../components/restaurant/Reviews/Reviews';
               <Tabs /> 
              </div>
              
-             {children}   
+             {children}  
+
+            
                 
         
             </div>
+            <CartContainer/>
             
                       
             

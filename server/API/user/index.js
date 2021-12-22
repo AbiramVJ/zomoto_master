@@ -20,12 +20,13 @@ Router.get("/:_id",async(req,res)=>{
 
         const{_id}= req.params;
         
-        const getUser = UserModel.findById(_id);
+        const getUser = await UserModel.findById(_id);
+       
         
         if(!getUser){
             return res.status(404).json({error: "user not found"});
         }
-        return res.json({users: getUser});
+        return res.json({users:getUser});
 
     }catch(error){
         return res.status(500).json({error: error.message});
@@ -64,5 +65,7 @@ Router.get("/:_id",async(req,res)=>{
 
     }
 });
+
+
 
 export default Router;
