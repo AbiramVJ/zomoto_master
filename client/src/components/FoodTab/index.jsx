@@ -92,7 +92,8 @@ const LargeTabs = () => {
     },
   ]);
 
-  const { type } = useParams();
+  const type  = useParams();
+  console.log(type);
 
   return (
     <>
