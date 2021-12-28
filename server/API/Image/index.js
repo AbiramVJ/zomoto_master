@@ -58,6 +58,17 @@ import {s3Upload} from "../../utils/s3.js";
      }
  })
 
+ Router.get("/:_id", async(req,res)=>{
+     try{
+         const {_id}= req.params;
+         const image = await ImageModel.findById(_id);
+         return res.status(200).json(image);
+
+     }catch(error){
+         return res.status(500).json({error:error.message});
+     }
+ })
+
  export default Router;
 
 

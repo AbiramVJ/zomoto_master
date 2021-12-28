@@ -27,12 +27,12 @@ import { ValidateId } from "../../validation/common.js";
      try{
         await ValidateRestaurantCity(req.query);
          const{city} = req.query;
-         const Restaurants = await RestaurantModel.find({ city});
-         if(Restaurants.length === 0){
+         const restaurants = await RestaurantModel.find({ city});
+         if(restaurants.length === 0){
              return res.json({error:"no restaurants found in the city"});
          }
 
-         return res.json({Restaurants});
+         return res.json({restaurants});
 
 
      }catch(error){

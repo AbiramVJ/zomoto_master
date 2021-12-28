@@ -20,6 +20,7 @@ import OrderOnline from './components/restaurant/OrderOnline';
 import Reviews from './components/restaurant/Reviews/Reviews';
 import Menu from './components/restaurant/Menu/Menu';
 import Photos from './components/restaurant/Photos/Photos';
+import Redirect from './pages/Restaurant/Redirect';
 //import CheckoutNavbar from './components/Navbar/CheckoutNavbar';
 
 
@@ -34,11 +35,15 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Navigate replace to="/delivery" />} />
+      {/* <Route path="/restaurant/:id" element={<Navigate replace to="/restaurant/:id/overview"/>} /> */}
+      
+  
     </Routes>
+
     
      <HomeLayoutHoc path="/:type" exact component={HomePage} />
-     <RestaurantLayoutHoc path="/restaurant/:id" exact component={RestaurantPage}/> 
-     <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={Overview}/> 
+     <RestaurantLayoutHoc path="/restaurant/:id" exact component={Redirect}/> 
+      <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={Overview}/> 
      <RestaurantLayoutHoc path="/restaurant/:id/order-online" exact component={OrderOnline}/> 
      <RestaurantLayoutHoc path="/restaurant/:id/reviews" exact component={Reviews}/> 
      <RestaurantLayoutHoc path="/restaurant/:id/menu" exact component={Menu}/>
