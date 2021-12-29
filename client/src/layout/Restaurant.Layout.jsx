@@ -1,9 +1,13 @@
 import React from 'react'
- import { useState } from 'react';
+ import { useState,useEffect } from 'react';
  import { TiStarOutline } from "react-icons/ti";
  import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
 import { BiBookmarkPlus } from "react-icons/bi";
-
+import { useParams } from 'react-router-dom';
+//dedux
+import { useDispatch } from 'react-redux';
+import { getSpecificRestaurant } from '../redux/reducers/restaurant/restaurant.action';
+import { getImage } from '../redux/reducers/Image/image.action';
 // //component
 import Navbar from '../components/Navbar';
 import ImageGrid from '../components/restaurant/ImageGrid';
@@ -16,28 +20,37 @@ import CartContainer from '../components/Cart/CartContainer';
 
  function Restaurantlayout({children}) {
     const [restaurant, setRestaurant] = useState({
-        images: [
-          "https://b.zmtcdn.com/data/pictures/chains/3/307893/ac9e6b3236967e1e255e14e24cc0c9e7.jpg",
-          "https://b.zmtcdn.com/data/pictures/chains/3/307893/69f1fa33c357f755f7021b7e35d59380.jpg",
-          "https://b.zmtcdn.com/data/pictures/chains/3/307893/ab32e4d69281d2eb639cb9ae4850e972.jpg",
-          "https://b.zmtcdn.com/data/pictures/chains/3/307893/69f1fa33c357f755f7021b7e35d59380.jpg",
-          "https://b.zmtcdn.com/data/pictures/chains/3/307893/ab32e4d69281d2eb639cb9ae4850e972.jpg"
-        ],
-        name: "Bakehouse Comfort",
-        cuisine: ["Bakery, Desserts, Fast Food"],
-        address: "Biryani, Jaffna, Colombo, Vavunija , Trncomale, Kandy",
+        images: [],
+        name: "",
+        cuisine: [""],
+        address: "",
         restaurantRating: 4.1,
         deliveryRating: 3.2,
       });
-    //   const images=[
-    //     "https://b.zmtcdn.com/data/pictures/chains/3/307893/ac9e6b3236967e1e255e14e24cc0c9e7.jpg",
-    //     "https://b.zmtcdn.com/data/pictures/chains/3/307893/69f1fa33c357f755f7021b7e35d59380.jpg",
-    //     "https://b.zmtcdn.com/data/pictures/chains/3/307893/ab32e4d69281d2eb639cb9ae4850e972.jpg",
-    //     "https://b.zmtcdn.com/data/pictures/chains/3/307893/69f1fa33c357f755f7021b7e35d59380.jpg",
-    //     "https://b.zmtcdn.com/data/pictures/chains/3/307893/ab32e4d69281d2eb639cb9ae4850e972.jpg",
+ 
+      const [images,setImages] = useState([]);
 
-    //   ]
-   
+      const { id } = useParams();
+      const dispatch = useDispatch();
+    
+      useEffect(() => {
+        dispatch(getSpecificRestaurant(id)).then((data) => {
+          setRestaurant((prev) => ({
+            ...prev,
+            ...data.payload.restaurant,
+          }));
+    
+          dispatch(getImage(data.payload.restaurant.photos)).then((data) => {
+            console.log(data);
+            setRestaurant((prev) => ({
+              ...prev,
+              images: data.payload.images,
+            }));
+          });
+        });
+    
+        
+      }, []);
     return (
         <>
         
