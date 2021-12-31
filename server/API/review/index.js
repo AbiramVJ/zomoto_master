@@ -15,19 +15,29 @@ const Router = express.Router();
  * method     GET
  */
 
-Router.get("/:resid",async(req,res)=>{
+// Router.get("/:resid",async(req,res)=>{
 
-    try{
-        const {resid} = req.params;
-        const reviews = await ReviewModel.find({restaurants: reviews})
+//     try{
+//         const {id} = req.params;
+//         const reviews = await ReviewModel.find({_id:id});
 
-        return res.json({reviews});
-    }catch(error){
-        return res.status(500).json({error: error.message});
+//         return res.json({reviews});
+//     }catch(error){
+//         return res.status(500).json({error: error.message});
 
-    }
+//     }
    
-});
+// });
+Router.get("/:resid", async (req, res) => {
+    try {
+      const { resid } = req.params;
+      const reviews = await ReviewModel.find({ restaurants: resid });
+  
+      return res.json({ reviews });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  });
 
 /**
  * Router    /new
