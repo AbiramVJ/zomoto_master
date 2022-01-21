@@ -22,7 +22,15 @@ const MenuSchema = new mongoose.Schema(
         unique: true,
       },
     ],
+    restaurant: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "restaurants",
+        
+      },
+    ],
   },
+  
   {
     timestamps: true,
   }
@@ -40,5 +48,10 @@ export const MenuModel = mongoose.model("menus", MenuSchema);
 //         },
 //     ],
 //     recommended:[{type:Mongoose.Types.ObjectId, ref:"Foods", unique: true}] ,
+//     restaurant: {
+//       type: Mongoose.Types.ObjectId,
+//       ref: "Restaurants",
+//       required: true,
+//     },
 // });
 // export const MenuModel = Mongoose.model("menus",MenuSchema);

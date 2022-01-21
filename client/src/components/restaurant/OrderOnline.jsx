@@ -16,13 +16,15 @@ import MenuListContainer from "./Order-Online/MenuListContainer";
 
 function OrderOnline() {
   const [menu, setMenu] = useState([]);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Recommended");
 
   const onClickHandler = (e) => {
     if (e.target.id) {
       setSelected(e.target.id);
     }
     return;
+
+
   };
 
   const dispatch = useDispatch();
@@ -35,11 +37,8 @@ function OrderOnline() {
     reduxState &&
       dispatch(getFoodList(reduxState.menu)).then((data) => {
         setMenu(data.payload.menus.menus);
-        console.log("hello");
       });
   }, [reduxState]);
-
-  
 
   return (
     <>

@@ -4,13 +4,15 @@ import { HiLocationMarker } from "react-icons/hi";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 //component
 import SignUp from "../Auth/SignUp";
 import Sigin from "../Auth/Sigin";
 function MobileNav({Sigin,SignUp}) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [user, setUser] = useState({});
+  //const [user, setUser] = useState({});
+  const reduxState = useSelector((globalState) => globalState.user.user.user);
   return (
     <div className="flex w-full items-center justify-between lg:hidden">
       <div className="w-28">
@@ -24,7 +26,7 @@ function MobileNav({Sigin,SignUp}) {
         <button className="bg-zomato-400 text-white py-2 px-3 rounded-full">
           Use App
         </button>
-        {user?.fullName ? (
+        {reduxState?.user?.fullName ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -70,7 +72,8 @@ function MobileNav({Sigin,SignUp}) {
 
 function LargeNav({Sigin,SignUp}) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [user, setUser] = useState({});
+  //const [user, setUser] = useState({});
+  const reduxState = useSelector((globalState) => globalState.user.user.user);
   return (
     <>
       `
@@ -103,7 +106,7 @@ function LargeNav({Sigin,SignUp}) {
               />
             </div>
           </div>
-          {user?.fullName ? (
+          {reduxState?.fullName ? (
             <div className="relative w-20">
               <div
                 onClick={() => setIsDropDownOpen((prev) => !prev)}

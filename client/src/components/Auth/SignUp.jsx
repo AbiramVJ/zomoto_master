@@ -2,6 +2,11 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import {FcGoogle} from 'react-icons/fc';
 
+
+//redux
+import { useDispatch } from 'react-redux';
+import { signUp } from '../../redux/reducers/auth/auth.action';
+
 function SignUp({ isOpen, setIsOpen }) {
 
 const [userData, setUserData] = useState({
@@ -9,6 +14,7 @@ const [userData, setUserData] = useState({
         password: "",
         fullName: "",
 });
+const  dispatch = useDispatch();
 
 const handleChanged = (e) =>{
     setUserData((prev)=>({...prev,[e.target.id]:e.target.value}));
@@ -18,6 +24,11 @@ const handleChanged = (e) =>{
  const closeModal = () => {
      setIsOpen(false)
    }
+   const submit = () => {
+    dispatch(signUp(userData));
+    setUserData({ email: "", password: "", fullName: "" });
+    closeModal();
+  };
 
 const googleSignUp = ()=>{
     window.location.href="http://localhost:4000/auth/google";
@@ -90,7 +101,7 @@ const googleSignUp = ()=>{
                             <input type='password' id='password' value={userData.password} onChange={handleChanged} placeholder='*********' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
                         </div>
 
-                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={closeModal}>
+                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={submit}>
                             
                             SignUp
                         </div>

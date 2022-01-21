@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -11,6 +11,7 @@ function FoodItem(props) {
       description: "",
       price: "",
     });
+    
 
   return (
     <>

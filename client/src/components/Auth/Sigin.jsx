@@ -2,6 +2,10 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import {FcGoogle} from 'react-icons/fc';
 
+//redux
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../redux/reducers/auth/auth.action';
+
 function Sigin({ isOpen, setIsOpen }) {
 
 const [userData, setUserData] = useState({
@@ -10,6 +14,8 @@ const [userData, setUserData] = useState({
      
 });
 
+const dispatch = useDispatch();
+
 const handleChanged = (e) =>{
     setUserData((prev)=>({...prev,[e.target.id]:e.target.value}));
         
@@ -17,6 +23,12 @@ const handleChanged = (e) =>{
 
  const closeModal = () => {
      setIsOpen(false)
+   }
+   const submit =()=>{
+    
+     dispatch(signIn(userData));
+     setUserData({email:"",password:""});
+     closeModal();
    }
 
 const googleSignin = ()=>{
@@ -88,7 +100,7 @@ const googleSignin = ()=>{
                             <input type='password' id='password' value={userData.password} onChange={handleChanged} placeholder='*********' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
                         </div>
 
-                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={closeModal}>
+                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={submit}>
                             
                             Sign In
                         </div>

@@ -23,6 +23,7 @@ function Overview() {
   const [reviews, setReviews] = useState([]);
   
   const { id } = useParams();
+  //console.log(_id);
 
   const reduxState = useSelector(
     (globalState) => globalState.restaurant.selectedRestaurant.restaurant
@@ -33,9 +34,9 @@ function Overview() {
   useEffect(() => {
     if (reduxState) {
       dispatch(getImage(reduxState?.menuImages)).then((data) => {
-        const images = [];
-        data.payload.images.map(({ location }) => images.push(location));
-        setMenuImages(images);
+        const image = [];
+        data.payload.images.map(({ location }) => image.push(location));
+        setMenuImages(image);
       });
 
       dispatch(getReviews(reduxState?._id)).then((data) =>

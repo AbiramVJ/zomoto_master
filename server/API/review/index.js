@@ -1,5 +1,6 @@
 // library
 import  express from "express";
+import passport from "passport";
 
 // data model
 
@@ -47,11 +48,12 @@ Router.get("/:resid", async (req, res) => {
  * method     POST
  */
 
-Router.post("/new",async(req,res)=>{
+Router.post("/new",passport.authenticate("jwt"),async(req,res)=>{
     try{
+        const {_id} = req.session.passport.user._doc;
         const {reviewData}= req.body;
 
-        await ReviewModel.create({...reviewData}); // its a new object spread operator
+        await ReviewModel.create({ ...reviewData, user: _id }) // its a new object spread operator
         return res.json({reviews: "successfully created route"})
 
     }catch(error){
