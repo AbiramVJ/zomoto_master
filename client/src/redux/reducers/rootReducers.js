@@ -8,5 +8,6 @@ import user from "./user/user.reducer";
 import food from "./food/food.reducer";
 import auth from "./auth/auth.reducer";
 
+
 const rootReducer = combineReducers({restaurant,image,user,food,auth});
 export default rootReducer;

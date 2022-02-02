@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import { getUser } from "../../../redux/reducers/user/user.action";
 
 function ReviewCard(props) {
-  const [user, setUser] = useState("abiram");
+  const [user, setUser] = useState([]);
   console.log(props);
 
   const dispatch = useDispatch();
@@ -14,13 +14,13 @@ function ReviewCard(props) {
   useEffect(() => {
     if (props) {
       dispatch(getUser(props.user)).then((data) => {
-        setUser(data.payload.user);
+        setUser(data.payload.user.fullName);
       });
     }
   }, []);
-  console.log(user);
+ // console.log(user);
   return (
-    <>
+    <div>
       <div className="my-3 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -62,7 +62,7 @@ function ReviewCard(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

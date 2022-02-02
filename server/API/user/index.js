@@ -25,12 +25,12 @@ Router.get("/:_id",async(req,res)=>{
         
         const getUser = await UserModel.findById(_id);
         
-      const {fullname} = getUser;
+        const {fullName} = getUser;
         if(!getUser){
            
             return res.status(404).json({error: "user not found"});
         }
-        return res.json({user:fullname});
+        return res.json({user:{fullName}});
 
     }catch(error){
         return res.status(500).json({error: error.message});

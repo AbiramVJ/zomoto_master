@@ -21,8 +21,8 @@ const Router = express.Router();
  Router.get("/list/:_id",async(req,res)=>{
      try{
 
-        const {_id}=req.params;
-        const menus=await MenuModel.findById({restaurant:_id});
+        const {_id} = req.params;
+        const menus = await MenuModel.findById({_id:_id});
 
         if(!menus){
              res.status(404).json({error: "no menu present for this restaurant"});

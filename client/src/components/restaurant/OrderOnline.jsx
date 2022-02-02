@@ -6,6 +6,7 @@ import { BiTimeFive } from "react-icons/bi";
 //redux
 import { useSelector,useDispatch } from "react-redux";
 import { getFoodList } from "../../redux/reducers/food/food.action";
+import FoodItem from "../Cart/FoodItem";
 
 // components
 import FloatMenuBtn from "./Order-Online/FloatMenuBtn";
@@ -13,10 +14,10 @@ import FoodList from "./Order-Online/FoodList";
 import MenuListContainer from "./Order-Online/MenuListContainer";
 
 
-
 function OrderOnline() {
   const [menu, setMenu] = useState([]);
   const [selected, setSelected] = useState("Recommended");
+  //console.log(menu);
 
   const onClickHandler = (e) => {
     if (e.target.id) {
@@ -24,19 +25,20 @@ function OrderOnline() {
     }
     return;
 
-
   };
 
   const dispatch = useDispatch();
 
-  const reduxState = useSelector(
-    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
-  );
+
+  const reduxState = useSelector((globalState) => globalState.restaurant.selectedRestaurant.restaurant);
+  console.log(reduxState);
 
   useEffect(() => {
     reduxState &&
       dispatch(getFoodList(reduxState.menu)).then((data) => {
         setMenu(data.payload.menus.menus);
+        console.log(data);
+        
       });
   }, [reduxState]);
 
@@ -44,7 +46,7 @@ function OrderOnline() {
     <>
       <div className="w-full h-screen flex">
         <aside className="hidden md:flex flex-col gap-1 border-r overflow-y-scroll border-gray-200 h-screen w-1/4">
-          {menu.map((item, index) => (
+          {menu.map((item,index) => (
             <MenuListContainer
               {...item}
               key={index}
@@ -61,9 +63,10 @@ function OrderOnline() {
             </h4>
           </div>
           <section className="flex h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
-            {menu.map((item, index) => (
-              <FoodList key={index} {...item} />
-            ))}
+
+            {menu.map((item, index)=>(
+              <FoodList {...item} key={index}/>
+          ))}
           </section>
         </div>
       </div>

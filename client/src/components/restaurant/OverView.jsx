@@ -19,7 +19,7 @@ import MapView from "./MapView";
 
 
 function Overview() {
-  const [menuImages, setMenuImages] = useState({ images: [] });
+  const [menuImages, setMenuImages] = useState({ image: [] });
   const [reviews, setReviews] = useState([]);
   
   const { id } = useParams();
@@ -34,9 +34,12 @@ function Overview() {
   useEffect(() => {
     if (reduxState) {
       dispatch(getImage(reduxState?.menuImages)).then((data) => {
+        //console.log(data);
         const image = [];
         data.payload.images.map(({ location }) => image.push(location));
+        
         setMenuImages(image);
+        console.log(image);
       });
 
       dispatch(getReviews(reduxState?._id)).then((data) =>
@@ -95,7 +98,7 @@ function Overview() {
             <MenuCollection
               menuTitle="Menu"
               pages="3"
-              image={menuImages.images}
+              image={menuImages.image}
             />
           </div>
           <h4 className="text-lg font-medium my-4">Cuisines</h4>
@@ -113,7 +116,7 @@ function Overview() {
             <h4 className="text-lg font-medium">Average Cost</h4>
             <h6>${reduxState?.averageCost} for one order (approx.)</h6>
             <small className="text-gray-500">
-              Exclusive of applicable taxes and cahrges, if any
+              Exclusive of applicable taxes and charges, if any
             </small>
           </div>
 
@@ -181,7 +184,7 @@ function Overview() {
             title="McDonald's"
             phno="+94772345634"
             mapLocation={getLatLong("6.932185339564366, 79.86134438143317")}
-            address="Shop 52, Plot 8, 9 & 10, G-8, Ground Floor, DDA Market, J-Block, Community Centre, Rajouri Garden, New Delhi"
+            address="Shop 52, Plot 8, 9 & 10, G-8, Ground Floor, DDA Market, J-Block, Community Centre, Rajouri Garden, New Colombo"
           />
           map stuff
         </aside>
