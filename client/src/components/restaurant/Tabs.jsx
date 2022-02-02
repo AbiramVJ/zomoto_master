@@ -20,6 +20,7 @@ function Tab(props) {
 
 function Tabs() {
   const location = useLocation();
+  console.log(location);
   const currentPath = location.pathname;
 
   const tabs = [

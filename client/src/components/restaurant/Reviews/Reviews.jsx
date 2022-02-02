@@ -1,18 +1,30 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 //component
 import ReviewCard from "./ReviewCard";
 import AddReviewCard from "./AddReviewCard";
 
+//redux action
+import { getReviews } from "../../../redux/reducers/review/review.action";
+import { useDispatch,useSelector } from "react-redux";
+
 function Reviews() {
-  const [reviews, setReviews] = useState([
-    {
-      fullName: "Abiram",
-      isRestaurantReview: true,
-      createdAt: "2020-05-14",
-      reviewsText: "this very good",
-    },
-  ]);
+  const [reviews, setReviews] = useState([]);
+
+ 
+  const reduxState = useSelector((globalState) => globalState.restaurant.selectedRestaurant.restaurant);
+  //console.log(reduxState);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    if(reduxState){
+      dispatch(getReviews(reduxState?._id)).then((data)=>{
+        //console.log(data);
+        setReviews(data.payload.reviews);
+      })
+    }
+   
+
+  },[reduxState])
   return (
     <>
     
@@ -22,8 +34,8 @@ function Reviews() {
           
             <AddReviewCard />
           </div>
-          {reviews.map((review) => (
-            <ReviewCard {...review} />
+          {reviews.map((review,index) => (
+            <ReviewCard {...review} key={index}/>
           ))}
         </div>
         <aside

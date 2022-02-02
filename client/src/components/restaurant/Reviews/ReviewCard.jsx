@@ -7,7 +7,7 @@ import { getUser } from "../../../redux/reducers/user/user.action";
 
 function ReviewCard(props) {
   const [user, setUser] = useState([]);
-  console.log(props);
+  //console.log(props);
 
   const dispatch = useDispatch();
 

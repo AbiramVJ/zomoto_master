@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  IoMdArrowDropdown,
+ 
   IoMdArrowDropright,
   IoMdArrowDropup,
 } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
-import { useHistory } from "react-router-dom";
+
 
 // component
 import FoodItem from "./FoodItem";
@@ -52,7 +52,7 @@ function CartLG({ toggle }) {
 
 function CartContainer() {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartData, setCartData] = useState([]);
+  //const [cartData, setCartData] = useState([]);
   const [foods, setFoods] = useState([
     {
       image:

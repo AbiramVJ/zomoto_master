@@ -7,7 +7,7 @@ function MenuCollection(props) {
   const [currentImage, setCurrentImage] = useState(0);
   const closeViewer = () => setIsMenuOpen(false);
   const openViewer = () => setIsMenuOpen(true);
-  console.log(props.image);
+ // console.log(props.image);
 
   return (
     <>

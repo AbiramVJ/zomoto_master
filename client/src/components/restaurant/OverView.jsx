@@ -39,7 +39,7 @@ function Overview() {
         data.payload.images.map(({ location }) => image.push(location));
         
         setMenuImages(image);
-        console.log(image);
+       // console.log(image);
       });
 
       dispatch(getReviews(reduxState?._id)).then((data) =>
