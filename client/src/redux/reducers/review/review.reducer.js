@@ -25,3 +25,4 @@ const restaurantReducer = (state = initialState, action)=>{
                 }
     }
 }
+export default restaurantReducer;

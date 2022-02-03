@@ -1,3 +1,4 @@
+
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import {FcGoogle} from 'react-icons/fc';
@@ -29,6 +30,7 @@ const handleChanged = (e) =>{
      dispatch(signIn(userData));
      setUserData({email:"",password:""});
      closeModal();
+     
    }
 
 const googleSignin = ()=>{

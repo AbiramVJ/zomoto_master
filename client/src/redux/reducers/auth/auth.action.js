@@ -13,7 +13,7 @@ export const signIn = (userData) => async (dispatch) => {
       url: `http://localhost:4000/auth/signin`,
       data: { credentials: userData },
     });
-
+  
     localStorage.setItem(
       "zomatoUser",
       JSON.stringify({ token: User.data.token })
@@ -35,13 +35,12 @@ export const signUp = (userData) => async (dispatch) => {
       data: { credentials: userData },
     });
 
+    
     localStorage.setItem(
       "zomatoUser",
       JSON.stringify({ token: User.data.token })
     );
-
     window.location.reload();
-
     return dispatch({ type: SIGN_UP, payload: User.data });
   } catch (error) {
     return dispatch({ type: "ERROR", payload: error });
@@ -52,7 +51,7 @@ export const signOut = () => async (dispatch) => {
   try {
     localStorage.removeItem("zomatoUser"); // remove the token from localStorage
     clearUser();
-    window.location.href = "http://localhost:3000/delivery"; // re
+    window.location.href = "http://localhost:3000/delivery"; // re render to delivery page
 
     return dispatch({ type: SIGN_OUT, payload: {} });
   } catch (error) {

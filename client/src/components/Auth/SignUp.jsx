@@ -28,6 +28,8 @@ const handleChanged = (e) =>{
     dispatch(signUp(userData));
     setUserData({ email: "", password: "", fullName: "" });
     closeModal();
+    
+    
   };
 
 const googleSignUp = ()=>{

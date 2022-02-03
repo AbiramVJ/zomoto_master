@@ -3,16 +3,23 @@ import { FaUserAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
+
+//redux
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { signOut } from "../../redux/reducers/auth/auth.action";
 
 //component
 import SignUp from "../Auth/SignUp";
 import Sigin from "../Auth/Sigin";
+
 function MobileNav({Sigin,SignUp}) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   //const [user, setUser] = useState({});
-  const reduxState = useSelector((globalState) => globalState.user.user.user);
+  const reduxState = useSelector((globalState) =>globalState.user.user.user);
+  console.log(reduxState);
+
+  const dispatch = useDispatch();
   return (
     <div className="flex w-full items-center justify-between lg:hidden">
       <div className="w-28">
@@ -26,7 +33,7 @@ function MobileNav({Sigin,SignUp}) {
         <button className="bg-zomato-400 text-white py-2 px-3 rounded-full">
           Use App
         </button>
-        {reduxState?.user?.fullName ? (
+        {reduxState?.fullName ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -40,12 +47,12 @@ function MobileNav({Sigin,SignUp}) {
             </div>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex-col gap-2 p-10 ">
-                <button>Sign Out</button>
+                <button onClick={()=>dispatch(signOut())}>Sign Out</button>
               </div>
             )}
           </>
         ) : (
-          <>
+          <div>
             <span
               onClick={() => setIsDropDownOpen((prev) => !prev)}
               className="border p-2 border-gray-300 text-zomato-400 rounded-full"
@@ -63,7 +70,7 @@ function MobileNav({Sigin,SignUp}) {
                 </div>
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -73,7 +80,8 @@ function MobileNav({Sigin,SignUp}) {
 function LargeNav({Sigin,SignUp}) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   //const [user, setUser] = useState({});
-  const reduxState = useSelector((globalState) => globalState.user.user.user);
+  const reduxState = useSelector((globalState) =>globalState.user.user.user);
+  const dispatch = useDispatch();
   return (
     <>
       `
@@ -120,7 +128,7 @@ function LargeNav({Sigin,SignUp}) {
               </div>
               {isDropDownOpen && (
                 <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2">
-                  <button>Sign Out</button>
+                  <button onClick={()=>dispatch(signOut())}>Sign Out</button>
                 </div>
               )}
             </div>

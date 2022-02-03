@@ -3,6 +3,11 @@ import './App.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Routes,Route, Navigate} from "react-router-dom";
+import { useEffect } from 'react';
+
+//redux
+import { getMySelf } from './redux/reducers/user/user.action';
+import { useDispatch } from 'react-redux';
 
 
 //hoc
@@ -29,6 +34,11 @@ import Redirect from './pages/Restaurant/Redirect';
 
 
 function App() {
+
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getMySelf());
+  })
   return (
     <>  
  
