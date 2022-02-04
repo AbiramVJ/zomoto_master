@@ -1,42 +1,37 @@
-
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
-import {FcGoogle} from 'react-icons/fc';
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 
 //redux
-import { useDispatch } from 'react-redux';
-import { signIn } from '../../redux/reducers/auth/auth.action';
+import { useDispatch } from "react-redux";
+import { signIn } from "../../redux/reducers/auth/auth.action";
 
 function Sigin({ isOpen, setIsOpen }) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
-const [userData, setUserData] = useState({
-        email: "",
-        password: "",
-     
-});
+  const dispatch = useDispatch();
 
-const dispatch = useDispatch();
+  const handleChanged = (e) => {
+    setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
-const handleChanged = (e) =>{
-    setUserData((prev)=>({...prev,[e.target.id]:e.target.value}));
-        
-}
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
- const closeModal = () => {
-     setIsOpen(false)
-   }
-   const submit =()=>{
+  const submit = () => {
+    dispatch(signIn(userData));
     
-     dispatch(signIn(userData));
-     setUserData({email:"",password:""});
-     closeModal();
-     
-   }
+    setUserData({ email: "", password: "" });
+    closeModal();
+  };
 
-const googleSignin = ()=>{
-    window.location.href="http://localhost:4000/auth/google";
-}
-  
+  const googleSignin = () => {
+    window.location.href = "http://localhost:4000/auth/google";
+  };
 
   return (
     <>
@@ -45,7 +40,7 @@ const googleSignin = ()=>{
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={closeModal}
-          style={{backgroundColor: "rgba(0,0,0,0.53)"}}
+          style={{ backgroundColor: "rgba(0,0,0,0.53)" }}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -80,34 +75,48 @@ const googleSignin = ()=>{
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
-                >
-                  
-                </Dialog.Title>
-                <div className='mt-2 flex flex-col gap-3 w-full'>
-                    <button className='py-2 justify-center rounded-lg flex items-center gap-2 w-full border-gray-400 bg-white text-gray-700 hover:bg-gray-400'
-                     onClick={googleSignin}>
-                        Sign Up with Google<FcGoogle />
-                    </button>
+                ></Dialog.Title>
+                <div className="mt-2 flex flex-col gap-3 w-full">
+                  <button
+                    className="py-2 justify-center rounded-lg flex items-center gap-2 w-full border-gray-400 bg-white text-gray-700 hover:bg-gray-400"
+                    onClick={googleSignin}
+                  >
+                    Sign Up with Google
+                    <FcGoogle />
+                  </button>
 
-                    <form className='flex flex-col gap-4'>
-                        
+                  <form className="flex flex-col gap-4">
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="text"
+                        id="email"
+                        value={userData.email}
+                        onChange={handleChanged}
+                        placeholder="User@Email.com"
+                        className="w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400"
+                      />
+                    </div>
 
-                        <div className='w-full flex flex-col gap-2'>
-                            <label htmlFor='email'>Email</label>
-                            <input type='text' id='email' value={userData.email} onChange={handleChanged} placeholder='User@Email.com' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
-                        </div>
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="password">password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        value={userData.password}
+                        onChange={handleChanged}
+                        placeholder="*********"
+                        className="w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400"
+                      />
+                    </div>
 
-                        <div className='w-full flex flex-col gap-2'>
-                            <label htmlFor='password'>password</label>
-                            <input type='password' id='password' value={userData.password} onChange={handleChanged} placeholder='*********' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
-                        </div>
-
-                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={submit}>
-                            
-                            Sign In
-                        </div>
-                        
-                    </form>
+                    <div
+                      className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg"
+                      onClick={submit}
+                    >
+                      Sign In
+                    </div>
+                  </form>
                 </div>
               </div>
             </Transition.Child>
@@ -115,8 +124,7 @@ const googleSignin = ()=>{
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }
-
 
 export default Sigin;

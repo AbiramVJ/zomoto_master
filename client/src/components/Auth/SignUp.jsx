@@ -1,41 +1,35 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
-import {FcGoogle} from 'react-icons/fc';
-
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 
 //redux
-import { useDispatch } from 'react-redux';
-import { signUp } from '../../redux/reducers/auth/auth.action';
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/reducers/auth/auth.action";
 
 function SignUp({ isOpen, setIsOpen }) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+  });
+  const dispatch = useDispatch();
 
-const [userData, setUserData] = useState({
-        email: "",
-        password: "",
-        fullName: "",
-});
-const  dispatch = useDispatch();
+  const handleChanged = (e) => {
+    setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
-const handleChanged = (e) =>{
-    setUserData((prev)=>({...prev,[e.target.id]:e.target.value}));
-        
-}
-
- const closeModal = () => {
-     setIsOpen(false)
-   }
-   const submit = () => {
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const submit = () => {
     dispatch(signUp(userData));
     setUserData({ email: "", password: "", fullName: "" });
     closeModal();
-    
-    
   };
 
-const googleSignUp = ()=>{
-    window.location.href="http://localhost:4000/auth/google";
-}
-  
+  const googleSignUp = () => {
+    window.location.href = "http://localhost:4000/auth/google";
+  };
 
   return (
     <>
@@ -44,7 +38,7 @@ const googleSignUp = ()=>{
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={closeModal}
-          style={{backgroundColor: "rgba(0,0,0,0.53)"}}
+          style={{ backgroundColor: "rgba(0,0,0,0.53)" }}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -79,36 +73,60 @@ const googleSignUp = ()=>{
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
-                >
-                  
-                </Dialog.Title>
-                <div className='mt-2 flex flex-col gap-3 w-full'>
-                    <button className='py-2 justify-center rounded-lg flex items-center gap-2 w-full border-gray-400 bg-white text-gray-700 hover:bg-gray-400' onClick={googleSignUp}>
-                        Sign Up with Google<FcGoogle />
-                    </button>
+                ></Dialog.Title>
+                <div className="mt-2 flex flex-col gap-3 w-full">
+                  <button
+                    className="py-2 justify-center rounded-lg flex items-center gap-2 w-full border-gray-400 bg-white text-gray-700 hover:bg-gray-400"
+                    onClick={googleSignUp}
+                  >
+                    Sign Up with Google
+                    <FcGoogle />
+                  </button>
 
-                    <form className='flex flex-col gap-2'>
-                        <div className='w-full flex flex-col gap-2'>
-                            <label htmlFor='fullName'>Full Name</label>
-                            <input type='text' id='fullName' value={userData.fullName} onChange={handleChanged} placeholder='John Doe' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
-                        </div>
+                  <form className="flex flex-col gap-2">
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="fullName">Full Name</label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        value={userData.fullName}
+                        onChange={handleChanged}
+                        placeholder="John Doe"
+                        className="w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400"
+                      />
+                    </div>
 
-                        <div className='w-full flex flex-col gap-2'>
-                            <label htmlFor='email'>Email</label>
-                            <input type='text' id='email' value={userData.email} onChange={handleChanged} placeholder='User@Email.com' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
-                        </div>
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="text"
+                        id="email"
+                        value={userData.email}
+                        onChange={handleChanged}
+                        placeholder="User@Email.com"
+                        className="w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400"
+                      />
+                    </div>
 
-                        <div className='w-full flex flex-col gap-2'>
-                            <label htmlFor='password'>password</label>
-                            <input type='password' id='password' value={userData.password} onChange={handleChanged} placeholder='*********' className='w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400'/>   
-                        </div>
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="password">password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        value={userData.password}
+                        onChange={handleChanged}
+                        placeholder="*********"
+                        className="w-full border-gray-400 px-3 py-2 rounded-lg focus:border-zomato-400"
+                      />
+                    </div>
 
-                        <div className='w-full text-center bg-zomato-400 text-white py-2 rounded-lg' onClick={submit}>
-                            
-                            SignUp
-                        </div>
-                        
-                    </form>
+                    <div
+                      className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg"
+                      onClick={submit}
+                    >
+                      SignUp
+                    </div>
+                  </form>
                 </div>
               </div>
             </Transition.Child>
@@ -116,8 +134,7 @@ const googleSignUp = ()=>{
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }
-
 
 export default SignUp;

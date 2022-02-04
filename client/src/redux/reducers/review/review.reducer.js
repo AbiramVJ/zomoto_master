@@ -14,7 +14,7 @@ const restaurantReducer = (state = initialState, action)=>{
             case POST_REVIEW:
                 return{
                     ...state,
-                    reviews:[...state.reviews. action.payload],
+                    
                 };
 
                 default:{
@@ -24,5 +24,7 @@ const restaurantReducer = (state = initialState, action)=>{
                     
                 }
     }
+    
 }
+
 export default restaurantReducer;

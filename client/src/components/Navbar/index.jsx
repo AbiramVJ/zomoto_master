@@ -15,7 +15,9 @@ import Sigin from "../Auth/Sigin";
 
 function MobileNav({Sigin,SignUp}) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
   //const [user, setUser] = useState({});
+  
   const reduxState = useSelector((globalState) =>globalState.user.user.user);
   console.log(reduxState);
 
