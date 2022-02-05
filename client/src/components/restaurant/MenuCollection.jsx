@@ -7,13 +7,13 @@ function MenuCollection(props) {
   const [currentImage, setCurrentImage] = useState(0);
   const closeViewer = () => setIsMenuOpen(false);
   const openViewer = () => setIsMenuOpen(true);
- // console.log(props.image);
+ //console.log(props.image);
 
   return (
     <>
       {isMenuOpen && (
         <ImageViewer
-          src={props.location}
+          src={props.image}
           currentIndex={currentImage}
           displayScroll={false}
           onClose={closeViewer}
@@ -25,7 +25,7 @@ function MenuCollection(props) {
       >
         <div className="w-full h-full overflow-hidden rounded-lg">
           <img
-            src={props.location}
+            src={props.image[0]}
             alt="menu"
             className="w-full h-full transform transition duration-400 rounded-lg hover:scale-110"
           />

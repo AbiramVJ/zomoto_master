@@ -15,6 +15,7 @@ import CheckoutLayoutHoc from './HOC/Checkout.hoc';
 import HomeLayoutHoc from './HOC/HomeLayoutHoc';
 // page
 import HomePage from "./pages/HomePage";
+import GoogleAuth from './pages/Restaurant/GoogleAuth';
 import RestaurantLayoutHoc from './HOC/Restaurant.hoc';
 //import RestaurantPage from './pages/RestaurantPage';
 import Checkout from "./pages/CheckoutPage";
@@ -26,6 +27,7 @@ import Reviews from './components/restaurant/Reviews/Reviews';
 import Menu from './components/restaurant/Menu/Menu';
 import Photos from './components/restaurant/Photos/Photos';
 import Redirect from './pages/Restaurant/Redirect';
+
 //import CheckoutNavbar from './components/Navbar/CheckoutNavbar';
 
 
@@ -52,6 +54,7 @@ function App() {
 
     
      <HomeLayoutHoc path="/:type" exact component={HomePage} />
+     <HomeLayoutHoc path="/google/:token" exact component={GoogleAuth}/>
      <RestaurantLayoutHoc path="/restaurant/:id" exact component={Redirect}/> 
       <RestaurantLayoutHoc path="/restaurant/:id/overview" exact component={Overview}/> 
      <RestaurantLayoutHoc path="/restaurant/:id/order-online" exact component={OrderOnline}/> 

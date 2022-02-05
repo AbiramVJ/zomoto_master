@@ -19,7 +19,8 @@ import MapView from "./MapView";
 
 
 function Overview() {
-  const [menuImages, setMenuImages] = useState({ image: [] });
+  const [menuImages, setMenuImages] = useState([]);
+  //console.log(menuImages);
   const [reviews, setReviews] = useState([]);
   
   const { id } = useParams();
@@ -34,13 +35,11 @@ function Overview() {
   useEffect(() => {
     if (reduxState) {
       dispatch(getImage(reduxState?.menuImages)).then((data) => {
-        //console.log(data);
-        const image = [];
-        data.payload.images.map(({ location }) => image.push(location));
-        
-        setMenuImages(image);
-       // console.log(image);
+        const images = [];
+        data.payload.images.map(({ location }) => images.push(location));
+        setMenuImages(images);
       });
+
 
       dispatch(getReviews(reduxState?._id)).then((data) =>
         setReviews(data.payload.reviews)
@@ -98,7 +97,7 @@ function Overview() {
             <MenuCollection
               menuTitle="Menu"
               pages="3"
-              image={menuImages.image}
+              image={menuImages}
             />
           </div>
           <h4 className="text-lg font-medium my-4">Cuisines</h4>

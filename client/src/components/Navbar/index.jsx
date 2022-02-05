@@ -47,6 +47,9 @@ function MobileNav({Sigin,SignUp}) {
                 className="w-full h-full rounded-full object-cover"
               />
             </div>
+            <div>
+              {reduxState.fullName}
+            </div>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex-col gap-2 p-10 ">
                 <button onClick={()=>dispatch(signOut())}>Sign Out</button>
@@ -86,7 +89,7 @@ function LargeNav({Sigin,SignUp}) {
   const dispatch = useDispatch();
   return (
     <>
-      `
+         
       <div className="hidden lg:inline container px-20 mx-auto">
         <div className="gap-4 w-full items-center justify-around flex">
           <div className="w-20">
@@ -95,6 +98,7 @@ function LargeNav({Sigin,SignUp}) {
               alt=""
             />
           </div>
+          
           <div className="w-3/4 bg-white shadow-md p-3 flex items-center gap-3 border border-gray-200 rounded ">
             <div className="flex items-center gap-2 border-r-2 border-gray-300 pr-2">
               <span className="text-zomato-400">
@@ -128,6 +132,9 @@ function LargeNav({Sigin,SignUp}) {
                   className="w-full h-full rounded-full object-cover"
                 />
               </div>
+              <div className="text-center border">
+              {reduxState.fullName}
+            </div>
               {isDropDownOpen && (
                 <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2">
                   <button onClick={()=>dispatch(signOut())}>Sign Out</button>
@@ -151,7 +158,7 @@ function LargeNav({Sigin,SignUp}) {
           )}
         </div>
       </div>
-      `
+      
     </>
   );
 }
