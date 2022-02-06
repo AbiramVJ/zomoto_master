@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getSpecificRestaurant } from '../redux/reducers/restaurant/restaurant.action';
 import { getImage } from '../redux/reducers/Image/image.action';
+import { getCart } from '../redux/reducers/cart/cart.action';
 // //component
 import Navbar from '../components/Navbar';
 import ImageGrid from '../components/restaurant/ImageGrid';
@@ -48,7 +49,7 @@ import CartContainer from '../components/Cart/CartContainer';
             }));
           });
         });
-    
+    dispatch(getCart());
         
       }, []);
     return (

@@ -49,6 +49,7 @@ function App() {
       <Route path="/" element={<Navigate replace to="/delivery" />} />
       {/* <Route path="/restaurant/:id" element={<Navigate replace to="/restaurant/:id/overview"/>} /> */}
       
+      
   
     </Routes>
 
@@ -62,8 +63,7 @@ function App() {
      <RestaurantLayoutHoc path="/restaurant/:id/menu" exact component={Menu}/>
      <RestaurantLayoutHoc path="/restaurant/:id/photos" exact component={Photos}/>
      <CheckoutLayoutHoc path="/checkout/orders" exact component={Checkout} />
-    
-        
+           
   </>
    
   );

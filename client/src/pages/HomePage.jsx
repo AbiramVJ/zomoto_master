@@ -11,9 +11,12 @@ import { useDispatch } from 'react-redux';
 // redux action
 import { getRestaurant } from '../redux/reducers/restaurant/restaurant.action';
 
+
 export const HomePage = () => {
     const { type } = useParams();
     const dispatch = useDispatch();
+
+    
 
     useEffect(()=>{
         dispatch(getRestaurant());
