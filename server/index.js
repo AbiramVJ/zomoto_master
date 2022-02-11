@@ -35,6 +35,7 @@ privateRouteConfig(passport);
  import Order from "./API/orders/index.js";
  import Review from "./API/review/index.js";
  import User from "./API/user/index.js";
+ import Mail from "./API/Mail/index.js";
 
  
 
@@ -48,6 +49,7 @@ zomoto.use("/image",Image); // image API
 zomoto.use("/order",Order); 
 zomoto.use("/review",Review); 
 zomoto.use("/user",User); 
+zomoto.use("/mail",Mail)
 
 
 
